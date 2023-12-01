@@ -21,21 +21,25 @@ try
     {
         for (int i = 1; i <= days.Count; i++)
         {
-            Console.WriteLine($"Day {i}");
-            Console.WriteLine($"------------");
-            Console.WriteLine($"Part1: {days[i].Part1()}");
-            Console.WriteLine($"Part2: {days[i].Part2()}");
-            Console.WriteLine($"=================================");
+            PrintDay(days, i);
         }
     }
     else
     {
-        Console.WriteLine($"Part1: {days[day].Part1()}");
-        Console.WriteLine($"Part2: {days[day].Part2()}");
+        PrintDay(days, day);
     }
     //Console.ReadKey();
 }
 catch (Exception e)
 {
     Console.WriteLine(e.Message);
+}
+
+static void PrintDay(Dictionary<int, Day> days, int day)
+{
+    Console.WriteLine($"Day {day}");
+    Console.WriteLine($"------------");
+    Console.WriteLine($"Part1: {days[day].Part1()}");
+    Console.WriteLine($"Part2: {days[day].Part2()}");
+    Console.WriteLine($"=================================");
 }
