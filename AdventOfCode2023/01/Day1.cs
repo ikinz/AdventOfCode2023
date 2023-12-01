@@ -102,10 +102,10 @@ namespace AdventOfCode2023
             foreach (string row in rows)
             {
                 // Get list of occurrences sorted by index
-                List<Occurrence> occurrenceInRow = FindAllOccurrences(row, convertingTable.Keys.ToArray());
+                List<Occurrence> occurrencesInRow = FindAllOccurrences(row, convertingTable.Keys.ToArray());
                 // Get First and last numbers
-                int num1 = convertingTable[occurrenceInRow[0].NumberKey];
-                int num2 = convertingTable[occurrenceInRow[occurrenceInRow.Count - 1].NumberKey];
+                int num1 = convertingTable[occurrencesInRow[0].NumberKey];
+                int num2 = convertingTable[occurrencesInRow[occurrencesInRow.Count - 1].NumberKey];
                 // Add the numbers together and add to result
                 result += ((num1 * 10) + num2);
             }
