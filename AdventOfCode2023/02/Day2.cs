@@ -15,7 +15,7 @@ namespace AdventOfCode2023
 
         public string Part2()
         {
-            throw new NotImplementedException();
+            return "0";
         }
     }
 }
