@@ -10,7 +10,7 @@ namespace AdventOfCode2023
     {
         public string Part1()
         {
-            List<string> rows = new List<string>(File.ReadAllLines("01\\01.txt"));
+            List<string> rows = new List<string>(File.ReadAllLines(@"01\01.txt"));
             List<int> numbers = new List<int>();
 
             foreach (string row in rows)
@@ -35,25 +35,28 @@ namespace AdventOfCode2023
         private struct Occurrence
         {
             public int Index;
-            public string Number;
+            public string NumberKey;
         }
 
         private List<Occurrence> FindAllOccurrences(string mainString, string[] searchStrings)
         {
             List<Occurrence> occurrences = new List<Occurrence>();
 
+            // For every key
             foreach (string searchString in searchStrings)
             {
+                // Match until no more matches
                 int index = -1;
                 do
                 {
                     index = mainString.IndexOf(searchString, index + 1);
                     if (index != -1)
                     {
+                        // Save key and it's index in the string
                         occurrences.Add(new Occurrence()
                         {
                             Index = index,
-                            Number = searchString
+                            NumberKey = searchString
                         });
                     }
                 } while (index != -1);
@@ -67,50 +70,46 @@ namespace AdventOfCode2023
 
         public string Part2()
         {
-            Dictionary<string, string> ConvertingTable = new Dictionary<string, string>()
+            // Map used both as a key-set when searching, and as a simple way to convert a match to an integer
+            Dictionary<string, int> convertingTable = new Dictionary<string, int>()
             {
-                { "0", "0" },
-                { "1", "1" },
-                { "2", "2" },
-                { "3", "3" },
-                { "4", "4" },
-                { "5", "5" },
-                { "6", "6" },
-                { "7", "7" },
-                { "8", "8" },
-                { "9", "9" },
-                { "zero", "0" },
-                { "one", "1" },
-                { "two", "2" },
-                { "three", "3" },
-                { "four", "4" },
-                { "five", "5" },
-                { "six", "6" },
-                { "seven", "7" },
-                { "eight", "8" },
-                { "nine", "9" }
+                { "0", 0 },
+                { "1", 1 },
+                { "2", 2 },
+                { "3", 3 },
+                { "4", 4 },
+                { "5", 5 },
+                { "6", 6 },
+                { "7", 7 },
+                { "8", 8 },
+                { "9", 9 },
+                { "zero", 0 },
+                { "one", 1 },
+                { "two", 2 },
+                { "three", 3 },
+                { "four", 4 },
+                { "five", 5 },
+                { "six", 6 },
+                { "seven", 7 },
+                { "eight", 8 },
+                { "nine", 9 }
             };
 
-            List<string> rows = new List<string>(File.ReadAllLines("01\\01.txt"));
-            List<int> numbers = new List<int>();
+            // Read the file
+            List<string> rows = new List<string>(File.ReadAllLines(@"01\01.txt"));
+            int result = 0;
 
             foreach (string row in rows)
             {
                 // Get list of occurrences sorted by index
-                List<Occurrence> occurrenceInRow = FindAllOccurrences(row, ConvertingTable.Keys.ToArray());
+                List<Occurrence> occurrenceInRow = FindAllOccurrences(row, convertingTable.Keys.ToArray());
                 // Get First and last numbers
-                string num1 = ConvertingTable[occurrenceInRow[0].Number];
-                string num2 = ConvertingTable[occurrenceInRow[occurrenceInRow.Count - 1].Number];
-                // Add the two numbers to form the final number, and add to set of numbers to add
-                numbers.Add(int.Parse(num1 + num2));
+                int num1 = convertingTable[occurrenceInRow[0].NumberKey];
+                int num2 = convertingTable[occurrenceInRow[occurrenceInRow.Count - 1].NumberKey];
+                // Add the numbers together and add to result
+                result += ((num1 * 10) + num2);
             }
 
-            // Add numbers & return
-            int result = 0;
-            foreach (int num in numbers)
-            {
-                result += num;
-            }
             return result.ToString();
         }
     }
