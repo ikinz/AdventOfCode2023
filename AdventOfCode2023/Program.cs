@@ -9,7 +9,7 @@ Dictionary<int, Day> days = new Dictionary<int, Day>()
 try
 {
     if (args.Length < 1)
-        throw new ArgumentException("To few arguments!");
+        throw new ArgumentException("Too few arguments!");
 
     if (!int.TryParse(args[0], out int day))
         throw new ArgumentException("Argument not a number!");
