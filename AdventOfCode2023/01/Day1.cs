@@ -32,15 +32,15 @@ namespace AdventOfCode2023
             return result.ToString();
         }
 
-        private struct Occurance
+        private struct Occurrence
         {
             public int Index;
             public string Number;
         }
 
-        static List<Occurance> FindAllOccurrences(string mainString, string[] searchStrings)
+        private List<Occurrence> FindAllOccurrences(string mainString, string[] searchStrings)
         {
-            List<Occurance> occurrences = new List<Occurance>();
+            List<Occurrence> occurrences = new List<Occurrence>();
 
             foreach (string searchString in searchStrings)
             {
@@ -50,7 +50,7 @@ namespace AdventOfCode2023
                     index = mainString.IndexOf(searchString, index + 1);
                     if (index != -1)
                     {
-                        occurrences.Add(new Occurance()
+                        occurrences.Add(new Occurrence()
                         {
                             Index = index,
                             Number = searchString
@@ -59,7 +59,7 @@ namespace AdventOfCode2023
                 } while (index != -1);
             }
 
-            // Sort the list of occurrences
+            // Sort by index
             occurrences = occurrences.OrderBy(x => x.Index).ToList();
 
             return occurrences;
@@ -96,11 +96,11 @@ namespace AdventOfCode2023
 
             foreach (string row in rows)
             {
-                // Get list of occurances sorted by index
-                List<Occurance> occuranceInRow = FindAllOccurrences(row, ConvertingTable.Keys.ToArray());
+                // Get list of occurrences sorted by index
+                List<Occurrence> occurrenceInRow = FindAllOccurrences(row, ConvertingTable.Keys.ToArray());
                 // Get First and last numbers
-                string num1 = ConvertingTable[occuranceInRow[0].Number];
-                string num2 = ConvertingTable[occuranceInRow[occuranceInRow.Count - 1].Number];
+                string num1 = ConvertingTable[occurrenceInRow[0].Number];
+                string num2 = ConvertingTable[occurrenceInRow[occurrenceInRow.Count - 1].Number];
                 // Add the two numbers to form the final number, and add to set of numbers to add
                 numbers.Add(int.Parse(num1 + num2));
             }
