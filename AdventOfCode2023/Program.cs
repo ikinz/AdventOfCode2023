@@ -2,8 +2,9 @@
 
 Dictionary<int, Day> days = new Dictionary<int, Day>()
 {
-    { 1, new Day1() }, // Done
-    { 2, new Day2() } // Done
+    { 1, new Day1(@"01\") }, // Done
+    { 2, new Day2(@"02\") }, // Done
+    { 3, new Day3(@"03\") }
 };
 
 try
@@ -17,16 +18,20 @@ try
     if (!days.ContainsKey(day) && day != 0)
         throw new ArgumentException("Day not implemented!");
 
+    bool sample = false;
+    if (args.Length > 1)
+        sample = args[1].Equals("test");
+
     if (day == 0)
     {
         for (int i = 1; i <= days.Count; i++)
         {
-            PrintDay(days, i);
+            PrintDay(days, i, sample);
         }
     }
     else
     {
-        PrintDay(days, day);
+        PrintDay(days, day, sample);
     }
     //Console.ReadKey();
 }
@@ -35,11 +40,14 @@ catch (Exception e)
     Console.WriteLine(e.Message);
 }
 
-static void PrintDay(Dictionary<int, Day> days, int day)
+static void PrintDay(Dictionary<int, Day> days, int day, bool sample)
 {
-    Console.WriteLine($"Day {day}");
+    days[day].Sample = sample;
+    string sampleFlavor = sample ? " (TEST)" : "";
+
+    Console.WriteLine($"Day {day}{sampleFlavor}");
     Console.WriteLine($"------------");
-    Console.WriteLine($"Part1: {days[day].Part1()}");
-    Console.WriteLine($"Part2: {days[day].Part2()}");
+    Console.WriteLine($"Part1: {days[day].Run(Part.One)}");
+    Console.WriteLine($"Part2: {days[day].Run(Part.Two)}");
     Console.WriteLine($"=================================");
 }

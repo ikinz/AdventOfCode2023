@@ -8,6 +8,10 @@ namespace AdventOfCode2023
 {
     internal class Day2 : Day
     {
+        public Day2(string folder) : base(folder)
+        {
+        }
+
         private class Game
         {
             public int ID { get; set; }
@@ -82,7 +86,7 @@ namespace AdventOfCode2023
             }
         }
 
-        public string Part1()
+        protected override string Part1(string[] input)
         {
             // Max values for each cube color
             Dictionary<string, int> MaxValues = new Dictionary<string, int>()
@@ -93,7 +97,7 @@ namespace AdventOfCode2023
             };
 
             // Read file
-            List<string> rows = new List<string>(File.ReadAllLines(@"02\input.txt"));
+            List<string> rows = new List<string>(input);
             int result = 0;
 
             foreach (string row in rows)
@@ -107,7 +111,7 @@ namespace AdventOfCode2023
             return result.ToString();
         }
 
-        public string Part2()
+        protected override string Part2(string[] input)
         {
             // Max values for each cube color
             Dictionary<string, int> MaxValues = new Dictionary<string, int>()
@@ -118,7 +122,7 @@ namespace AdventOfCode2023
             };
 
             // Read file
-            List<string> rows = new List<string>(File.ReadAllLines(@"02\input.txt"));
+            List<string> rows = new List<string>(input);
             int result = 0;
 
             foreach (string row in rows)

@@ -8,9 +8,13 @@ namespace AdventOfCode2023
 {
     internal class Day1 : Day
     {
-        public string Part1()
+        public Day1(string folder) : base(folder)
         {
-            List<string> rows = new List<string>(File.ReadAllLines(@"01\input.txt"));
+        }
+
+        protected override string Part1(string[] input)
+        {
+            List<string> rows = new List<string>(input);
             List<int> numbers = new List<int>();
 
             foreach (string row in rows)
@@ -68,7 +72,7 @@ namespace AdventOfCode2023
             return occurrences;
         }
 
-        public string Part2()
+        protected override string Part2(string[] input)
         {
             // Map used both as a key-set when searching, and as a simple way to convert a match to an integer
             Dictionary<string, int> convertingTable = new Dictionary<string, int>()
@@ -96,7 +100,7 @@ namespace AdventOfCode2023
             };
 
             // Read the file
-            List<string> rows = new List<string>(File.ReadAllLines(@"01\input.txt"));
+            List<string> rows = new List<string>(input);
             int result = 0;
 
             foreach (string row in rows)
