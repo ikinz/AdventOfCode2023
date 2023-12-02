@@ -10,7 +10,7 @@ namespace AdventOfCode2023
     {
         public string Part1()
         {
-            List<string> rows = new List<string>(File.ReadAllLines(@"01\01.txt"));
+            List<string> rows = new List<string>(File.ReadAllLines(@"01\input.txt"));
             List<int> numbers = new List<int>();
 
             foreach (string row in rows)
@@ -96,7 +96,7 @@ namespace AdventOfCode2023
             };
 
             // Read the file
-            List<string> rows = new List<string>(File.ReadAllLines(@"01\01.txt"));
+            List<string> rows = new List<string>(File.ReadAllLines(@"01\input.txt"));
             int result = 0;
 
             foreach (string row in rows)

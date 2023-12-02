@@ -3,7 +3,7 @@
 Dictionary<int, Day> days = new Dictionary<int, Day>()
 {
     { 1, new Day1() }, // Done
-    { 2, new Day2() }
+    { 2, new Day2() } // Done
 };
 
 try
