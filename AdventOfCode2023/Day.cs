@@ -46,6 +46,7 @@ namespace AdventOfCode2023
                 return false;
 
             lines = File.ReadAllLines(file);
+
             return true;
         }
 
@@ -58,7 +59,7 @@ namespace AdventOfCode2023
             if (!ReadAllLines(part, out string[]? lines))
                 return "<no input>";
 
-            if (lines == null)
+            if (lines == null || lines.Length < 1)
                 return "<no input>";
 
             if (part == Part.One)
