@@ -50,9 +50,9 @@ namespace AdventOfCode2023
             return true;
         }
 
-        protected abstract string Part1(string[] input);
+        protected abstract string Part1(List<string> rows);
 
-        protected abstract string Part2(string[] input);
+        protected abstract string Part2(List<string> rows);
 
         public string Run(Part part)
         {
@@ -64,17 +64,14 @@ namespace AdventOfCode2023
 
             if (part == Part.One)
             {
-                return Part1(lines);
+                return Part1(new List<string>(lines));
             }
             else
             {
-                return Part2(lines);
+                return Part2(new List<string>(lines));
             }
         }
 
-        public Day(string folder)
-        {
-            Folder = folder;
-        }
+        public Day(string folder) => Folder = folder;
     }
 }

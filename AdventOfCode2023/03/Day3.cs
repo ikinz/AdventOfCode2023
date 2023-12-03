@@ -37,10 +37,8 @@ namespace AdventOfCode2023
                 || IsSymbol(rows, y + 1, x - 1) || IsSymbol(rows, y + 1, x) || IsSymbol(rows, y + 1, x + 1);
         }
 
-        protected override string Part1(string[] input)
+        protected override string Part1(List<string> rows)
         {
-            List<string> rows = new List<string>(input);
-
             int accumulator = 0;
             string currentNumber = "";
             bool connectedSymbol = false;
@@ -116,9 +114,8 @@ namespace AdventOfCode2023
             return null;
         }
 
-        protected override string Part2(string[] input)
+        protected override string Part2(List<string> rows)
         {
-            List<string> rows = new List<string>(input);
             Dictionary<string, List<int>> gears = new Dictionary<string, List<int>>();
 
             string currentNumber = "";

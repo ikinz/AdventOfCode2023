@@ -86,7 +86,7 @@ namespace AdventOfCode2023
             }
         }
 
-        protected override string Part1(string[] input)
+        protected override string Part1(List<string> rows)
         {
             // Max values for each cube color
             Dictionary<string, int> MaxValues = new Dictionary<string, int>()
@@ -96,8 +96,6 @@ namespace AdventOfCode2023
                 { "blue", 14 }
             };
 
-            // Read file
-            List<string> rows = new List<string>(input);
             int result = 0;
 
             foreach (string row in rows)
@@ -111,7 +109,7 @@ namespace AdventOfCode2023
             return result.ToString();
         }
 
-        protected override string Part2(string[] input)
+        protected override string Part2(List<string> rows)
         {
             // Max values for each cube color
             Dictionary<string, int> MaxValues = new Dictionary<string, int>()
@@ -121,8 +119,6 @@ namespace AdventOfCode2023
                 { "blue", 14 }
             };
 
-            // Read file
-            List<string> rows = new List<string>(input);
             int result = 0;
 
             foreach (string row in rows)

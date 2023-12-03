@@ -12,9 +12,8 @@ namespace AdventOfCode2023
         {
         }
 
-        protected override string Part1(string[] input)
+        protected override string Part1(List<string> rows)
         {
-            List<string> rows = new List<string>(input);
             List<int> numbers = new List<int>();
 
             foreach (string row in rows)
@@ -72,7 +71,7 @@ namespace AdventOfCode2023
             return occurrences;
         }
 
-        protected override string Part2(string[] input)
+        protected override string Part2(List<string> rows)
         {
             // Map used both as a key-set when searching, and as a simple way to convert a match to an integer
             Dictionary<string, int> convertingTable = new Dictionary<string, int>()
@@ -99,8 +98,6 @@ namespace AdventOfCode2023
                 { "nine", 9 }
             };
 
-            // Read the file
-            List<string> rows = new List<string>(input);
             int result = 0;
 
             foreach (string row in rows)

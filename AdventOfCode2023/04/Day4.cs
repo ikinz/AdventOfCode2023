@@ -12,12 +12,12 @@ namespace AdventOfCode2023
         {
         }
 
-        protected override string Part1(string[] input)
+        protected override string Part1(List<string> rows)
         {
             return "0";
         }
 
-        protected override string Part2(string[] input)
+        protected override string Part2(List<string> rows)
         {
             return "0";
         }
