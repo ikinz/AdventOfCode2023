@@ -4,7 +4,8 @@ Dictionary<int, Day> days = new Dictionary<int, Day>()
 {
     { 1, new Day1(@"01\") }, // Done
     { 2, new Day2(@"02\") }, // Done
-    { 3, new Day3(@"03\") }
+    { 3, new Day3(@"03\") }, // Done
+    { 4, new Day4(@"04\") }
 };
 
 try
