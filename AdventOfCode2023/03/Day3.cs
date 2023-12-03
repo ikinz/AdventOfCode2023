@@ -43,14 +43,13 @@ namespace AdventOfCode2023
             string currentNumber = "";
             bool connectedSymbol = false;
 
-            // Add point to the end of each line
-            // This will handle any edge cases where a line ends on a number
-            for (int i = 0; i < rows.Count; i++)
-                rows[i] += ".";
-
             // For every row
             for (int y = 0; y < rows.Count; y++)
             {
+                // Add point to the end of each line
+                // This will handle any edge cases where a line ends on a number
+                rows[y] += ".";
+
                 // For every letter
                 for (int x = 0;  x < rows[y].Length; x++)
                 {
@@ -117,14 +116,13 @@ namespace AdventOfCode2023
             string currentNumber = "";
             Point? asterisk = null;
 
-            // Add point to the end of each line
-            // This will handle any edge cases where a line ends on a number
-            for (int i = 0; i < rows.Count; i++)
-                rows[i] += ".";
-
             // For every row
             for (int y = 0; y < rows.Count; y++)
             {
+                // Add point to the end of each line
+                // This will handle any edge cases where a line ends on a number
+                rows[y] += ".";
+
                 // For every letter
                 for (int x = 0; x < rows[y].Length; x++)
                 {
