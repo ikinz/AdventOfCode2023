@@ -43,15 +43,14 @@ namespace AdventOfCode2023
             string currentNumber = "";
             bool connectedSymbol = false;
 
+            // Add point to the end of each line
+            // This will handle any edge cases where a line ends on a number
+            for (int i = 0; i < rows.Count; i++)
+                rows[i] += ".";
+
             // For every row
             for (int y = 0; y < rows.Count; y++)
             {
-                // If the last row ended on a number, handle it
-                if (connectedSymbol)
-                    accumulator += int.Parse(currentNumber);
-                currentNumber = "";
-                connectedSymbol = false;
-
                 // For every letter
                 for (int x = 0;  x < rows[y].Length; x++)
                 {
@@ -76,9 +75,6 @@ namespace AdventOfCode2023
                 }
                 
             }
-            // If the last row of the set ended with a number, handle it
-            if (connectedSymbol)
-                accumulator += int.Parse(currentNumber);
 
             return accumulator.ToString();
         }
@@ -121,20 +117,14 @@ namespace AdventOfCode2023
             string currentNumber = "";
             Point? asterisk = null;
 
+            // Add point to the end of each line
+            // This will handle any edge cases where a line ends on a number
+            for (int i = 0; i < rows.Count; i++)
+                rows[i] += ".";
+
             // For every row
             for (int y = 0; y < rows.Count; y++)
             {
-                // If the last row ended on a number, handle it
-                if (asterisk != null)
-                {
-                    string xy = $"{asterisk.Value.X},{asterisk.Value.Y}";
-                    if (!gears.ContainsKey(xy))
-                        gears.Add(xy, new List<int>());
-                    gears[xy].Add(int.Parse(currentNumber));
-                }
-                currentNumber = "";
-                asterisk = null;
-
                 // For every letter
                 for (int x = 0; x < rows[y].Length; x++)
                 {
@@ -162,15 +152,6 @@ namespace AdventOfCode2023
                         asterisk = null;
                     }
                 }
-            }
-
-            // If the last row of the set ended with a number, handle it
-            if (asterisk != null)
-            {
-                string xy = $"{asterisk.Value.X},{asterisk.Value.Y}";
-                if (!gears.ContainsKey(xy))
-                    gears.Add(xy, new List<int>());
-                gears[xy].Add(int.Parse(currentNumber));
             }
 
             // Accumulate all gear ratios where it has exactly two parts
