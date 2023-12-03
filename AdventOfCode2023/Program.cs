@@ -25,10 +25,8 @@ try
 
     if (day == 0)
     {
-        for (int i = 1; i <= days.Count; i++)
-        {
-            PrintDay(days, i, sample);
-        }
+        foreach (int key in days.Keys)
+            PrintDay(days, key, sample);
     }
     else
     {

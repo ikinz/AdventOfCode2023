@@ -82,27 +82,32 @@ namespace AdventOfCode2023
         {
             point = null;
 
+            // Check in bounds (y)
             if (y < 0 || y >= rows.Count)
                 return false;
 
+            // Check in bounds (x)
             if (x < 0 || x >= rows[y].Length)
                 return false;
 
+            // Is asterisk
             if (rows[y][x] == '*')
             {
+                // Save XY and return true
                 point = new Point(x, y);
                 return true;
             }
 
+            // Not asterisk
             return false;
         }
 
         private Point? GetConnectedAsterisk(List<string> rows, int y, int x)
         {
             Point? point;
-            bool connected = IsAsterisk(rows, y - 1, x - 1, out point) || IsAsterisk(rows, y - 1, x, out point) || IsAsterisk(rows, y - 1, x + 1, out point)
-                || IsAsterisk(rows, y, x - 1, out point) || IsAsterisk(rows, y, x + 1, out point)
-                || IsAsterisk(rows, y + 1, x - 1, out point) || IsAsterisk(rows, y + 1, x, out point) || IsAsterisk(rows, y + 1, x + 1, out point);
+            bool connected = IsAsterisk(rows, y - 1, x - 1, out point) || IsAsterisk(rows, y - 1, x, out point) || IsAsterisk(rows, y - 1, x + 1, out point)  // XXX
+                          || IsAsterisk(rows, y, x - 1, out point)                                              || IsAsterisk(rows, y, x + 1, out point)      // XNX
+                          || IsAsterisk(rows, y + 1, x - 1, out point) || IsAsterisk(rows, y + 1, x, out point) || IsAsterisk(rows, y + 1, x + 1, out point); // XXX
 
             if (connected)
                 return point;
