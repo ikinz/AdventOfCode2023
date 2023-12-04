@@ -59,7 +59,7 @@ namespace AdventOfCode2023
             if (!ReadAllLines(part, out string[]? lines))
                 return "<no input>";
 
-            if (lines == null || lines.Length < 1)
+            if (lines == null || lines.Length < 1 || string.IsNullOrWhiteSpace(lines[0]))
                 return "<no input>";
 
             if (part == Part.One)
