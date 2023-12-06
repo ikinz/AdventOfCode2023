@@ -1,5 +1,5 @@
 ﻿using AdventOfCode2023;
-using AdventOfCode2023._06;
+using System.Diagnostics;
 
 Dictionary<int, Day> days = new Dictionary<int, Day>()
 {
@@ -8,7 +8,8 @@ Dictionary<int, Day> days = new Dictionary<int, Day>()
     { 3, new Day3(@"03\") }, // Done
     { 4, new Day4(@"04\") }, // Done
     { 5, new Day5(@"05\") }, // Done
-    { 6, new Day6(@"06\") }
+    { 6, new Day6(@"06\") }, // Done
+    { 7, new Day7(@"07\") }
 };
 
 try
@@ -45,12 +46,20 @@ catch (Exception e)
 
 static void PrintDay(Dictionary<int, Day> days, int day, bool sample)
 {
+    Stopwatch watch;
+
     days[day].Sample = sample;
     string sampleFlavor = sample ? " (TEST)" : "";
 
     Console.WriteLine($"Day {day}{sampleFlavor}");
     Console.WriteLine($"------------");
-    Console.WriteLine($"Part1: {days[day].Run(Part.One)}");
-    Console.WriteLine($"Part2: {days[day].Run(Part.Two)}");
+    watch = Stopwatch.StartNew();
+    string res1 = days[day].Run(Part.One);
+    watch.Stop();
+    Console.WriteLine($"Part1: {res1} ({watch.ElapsedMilliseconds} ms)");
+    watch = Stopwatch.StartNew();
+    string res2 = days[day].Run(Part.Two);
+    watch.Stop();
+    Console.WriteLine($"Part2: {res2} ({watch.ElapsedMilliseconds} ms)");
     Console.WriteLine($"=================================");
 }
