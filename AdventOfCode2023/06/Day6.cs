@@ -83,30 +83,19 @@ namespace AdventOfCode2023
             return acc.ToString();
         }
 
-        private Race GetRaceFixed(List<string> rows)
-        {
-            string[] times;
-            string[] distances;
-
-            times = rows[0].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            distances = rows[1].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-            string timeFixed = "";
-            string distanceFixed = "";
-            for (long i = 0; i < times.Length; i++)
-            {
-                timeFixed += times[i];
-                distanceFixed += distances[i];
-            }
-                
-            return new Race(long.Parse(timeFixed), long.Parse(distanceFixed));
-        }
-
         protected override string Part2(List<string> rows)
         {
-            Race race = GetRaceFixed(rows);
+            List<Race> races = GetRaceCollection(rows);
+            
+            string time = "";
+            string distance = "";
+            foreach (Race race in races)
+            {
+                time += race.RaceTime.ToString();
+                distance += race.Distance.ToString();
+            }
 
-            return race.GetNumHolds().ToString();
+            return new Race(long.Parse(time), long.Parse(distance)).GetNumHolds().ToString();
         }
     }
 }
