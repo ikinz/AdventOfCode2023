@@ -12,7 +12,7 @@ namespace AdventOfCode2023
         {
         }
 
-        private (long prev, long next) Extrapolate(List<List<long>> histories)
+        private (long, long) Extrapolate(List<List<long>> histories)
         {
             for (int i = histories.Count - 2; i >= 0; i--)
             {
@@ -23,7 +23,7 @@ namespace AdventOfCode2023
             return (histories[0].First(), histories[0].Last());
         }
 
-        private (long prev, long next) GetNextNumber(List<long> numbers)
+        private (long, long) GetNextNumber(List<long> numbers)
         {
             List<List<long>> histories = new List<List<long>>()
             {
