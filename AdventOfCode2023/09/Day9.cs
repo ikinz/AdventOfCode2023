@@ -16,11 +16,11 @@ namespace AdventOfCode2023
         {
             for (int i = histories.Count - 2; i >= 0; i--)
             {
-                histories[i].Insert(0, histories[i][0] - histories[i + 1][0]);
-                histories[i].Add(histories[i][histories[i].Count - 1] + histories[i + 1][histories[i + 1].Count - 1]);
+                histories[i].Insert(0, histories[i].First() - histories[i + 1].First());
+                histories[i].Add(histories[i].Last() + histories[i + 1].Last());
             }
 
-            return (histories[0][0], histories[0][histories[0].Count - 1]);
+            return (histories[0].First(), histories[0].Last());
         }
 
         private (long prev, long next) GetNextNumber(List<long> numbers)
@@ -34,7 +34,6 @@ namespace AdventOfCode2023
             int count = 0;
             do
             {
-                areZero = false;
                 List<long> history = new List<long>();
 
                 for (int i = 1; i < histories[count].Count; i++)
